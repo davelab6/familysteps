@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="Pablo Impallari www.impallari.com" />
+<title>Family Stem Weights Calculator - Impallari.com</title>
+<style>
+body {  font: normal 14px/18px "Courier New", Courier, mono; }
+p {  margin: 18px; font: normal 14px/18px "Courier New", Courier, mono; }
+td p { margin: 0; }
+.black { background: #000; }
+.note { color: #baba9d; font: normal 12px/18px "Courier New", Courier, mono; }
+</style>
+<!-- TODO fix this [if lte IE 8]><script language="javascript" type="text/javascript" src="/familysteps/js/flot07/excanvas.min.js"></script><![endif] -->
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="//www.flotcharts.org/javascript/jquery.flot.min.js"></script>    
+</head>
+
+<body spellcheck="false">
+
+<table><tr><td><p>Family Stem Weights Calculator <span class="note">Version 4.0</span></p></td></tr></table>
+
+<!-- Form -->
+<form method="post" action="/familysteps/index.php">
+	<table>
+		<tr>
+			<td width="89"><p>Thin</p></td>
+			<td width="80"><input type="text" name="min" id="min" size="5" value="20" /></td>
+		</tr>
+		<tr>
+			<td width="89"><p>Black</p></td>
+			<td width="80"><input type="text" name="max" id="max" size="5" value="220" /></td>
+		</tr>
+		<tr>
+			<td width="89"><p>Steps</p></td>
+			<td width="80">
+				<select name="instances">
+					<option value="3" >3</option>
+					<option value="4" >4</option>
+					<option value="5" >5</option>
+					<option value="6" >6</option>
+					<option value="7" >7</option>
+					<option value="8" >8</option>
+					<option value="9" selected>9</option>
+					<option value="10" >10</option>
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td width="89"><p>Decimals?</p></td>
+			<td width="80">
+				<select name="showdecimals">
+					<option value="1" selected>Round</option>
+					<option value="4" >1 Decimal</option>
+					<option value="5" >2 Decimals</option>
+					<option value="2" >Round Down</option>
+					<option value="3" >Round Up</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td width="89">&nbsp;</td>
+			<td width="80"><button type="submit">Calculate</button></td>
+		</tr>
+	</table>
+</form>
+<!-- End Form -->
+
+<br />
+
+<!-- Graph -->
+<table>
+	<tr>
+		<td>
+			<p>Equal Steps</p>
+			<table><tr><td width="20" class="black">&nbsp;</td></tr></table><table><tr><td width="45" class="black">&nbsp;</td></tr></table><table><tr><td width="70" class="black">&nbsp;</td></tr></table><table><tr><td width="95" class="black">&nbsp;</td></tr></table><table><tr><td width="120" class="black">&nbsp;</td></tr></table><table><tr><td width="145" class="black">&nbsp;</td></tr></table><table><tr><td width="170" class="black">&nbsp;</td></tr></table><table><tr><td width="195" class="black">&nbsp;</td></tr></table><table><tr><td width="220" class="black">&nbsp;</td></tr></table>		</td>
+		<td width="20">&nbsp;</td>
+		<td>
+			<p>Impallari Formula</p>
+			<table><tr><td width="20" class="black">&nbsp;</td></tr></table><table><tr><td width="29" class="black">&nbsp;</td></tr></table><table><tr><td width="45" class="black">&nbsp;</td></tr></table><table><tr><td width="66" class="black">&nbsp;</td></tr></table><table><tr><td width="93" class="black">&nbsp;</td></tr></table><table><tr><td width="124" class="black">&nbsp;</td></tr></table><table><tr><td width="158" class="black">&nbsp;</td></tr></table><table><tr><td width="191" class="black">&nbsp;</td></tr></table><table><tr><td width="220" class="black">&nbsp;</td></tr></table>			
+		</td>
+		<td width="20">&nbsp;</td>
+		<td>
+			<p>Luc(as) Formula</p>
+			<table><tr><td width="20" class="black">&nbsp;</td></tr></table><table><tr><td width="27" class="black">&nbsp;</td></tr></table><table><tr><td width="36" class="black">&nbsp;</td></tr></table><table><tr><td width="49" class="black">&nbsp;</td></tr></table><table><tr><td width="66" class="black">&nbsp;</td></tr></table><table><tr><td width="90" class="black">&nbsp;</td></tr></table><table><tr><td width="121" class="black">&nbsp;</td></tr></table><table><tr><td width="163" class="black">&nbsp;</td></tr></table><table><tr><td width="220" class="black">&nbsp;</td></tr></table>			
+		</td>
+	</tr>
+</table>
+<!-- End Graph -->
+
+<p>&nbsp;</p>
+
+<!-- Table -->
+<table>
+	<tr>
+		<td valign="top" width="100"><p><strong>Styles</strong></p></td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right"><p><strong>Equal Steps</strong></p></td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right"><p><strong>Impallari Formula</strong></p></td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right"><p><strong>Luc(as) Formula</strong></p></td>
+	</tr>
+	<tr>
+		<td valign="top" width="100"><p>Step 1</p></td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right"><p>20</p></td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right"><p>20</p></td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right"><p>20</p></td>
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 2</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 45</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+9</span> 29</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+7</span> 27</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 3</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 70</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+16</span> 45</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+9</span> 36</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 4</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 95</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+21</span> 66</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+13</span> 49</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 5</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 120</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+27</span> 93</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+17</span> 66</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 6</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 145</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+31</span> 124</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+24</span> 90</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 7</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 170</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+34</span> 158</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+31</span> 121</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 8</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 195</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+33</span> 191</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+42</span> 163</p>
+		</td>		
+	</tr>
+		<tr>
+		<td valign="top" width="100">
+			<p>Step 9</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">		
+			<p><span class="note">+25</span> 220</p>
+		</td>
+		<td width="20">&nbsp;</td>
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+29</span> 220</p>
+		</td>
+		<td width="20">&nbsp;</td>	
+		<td valign="top" width="160" align="right">
+			<p><span class="note">+57</span> 220</p>
+		</td>		
+	</tr>
+	</table>
+<!-- End Table -->
+
+<p>&nbsp;</p>
+
+<div id="placeholder" style="width:640px;height:450px;"></div>
+
+<table>
+	<tr>
+		<td>
+		<p>My formula describes an <a href="http://en.wikipedia.org/wiki/Ogee" target="_blank">Ogee Curve</a> in between the Lucas Theory and Equal steps.<br/>
+		This seems to be the most useful pattern to distribute weight across a font family.<br/>
+		Especially in large families with many weights, or where the Black-Thin difference is lengthy.<br/>
+		<br/>
+		You can take this values as a pretty good starting point, and then refine according to your eyes.<br/>
+		Cheers, Pablo Impallari.
+		</p>
+		<p>John Berry wrote, "The usual progression would be that a jump of two in the weight category would give you a pair of typefaces with sufficient contrast to be used together (one as a bolder equivalent of the other); a jump of only one weight would usually not provide enough contrast to be useful. (For example, you might use Book-Semibold together, or Normal-Bold, but not Normal-Semibold, in this scenario.)"</p>
+		<p><strong>Reference:</strong><br />
+			<a href="http://www.lucasfonts.com/about/interpolation-theory/" target="_blank">Luc(as) de Groot’s Interpolation Theory</a><br />
+			<a href="http://typophile.com/node/65797" target="_blank">Weight interpolation and maths</a><br />
+			<a href="http://www.typophile.com/node/32313" target="_blank">Golden Section as a method for finding regular and bold complements</a><br />
+			<a href="http://www.typophile.com/node/39376" target="_blank">Using Multiple Masters to Generate Weights in a Family - Insight?</a><br />
+			<a href="http://typophile.com/node/2811" target="_blank">Font weights and font weight scaling</a><br />
+			<a href="http://www.w3.org/TR/css3-fonts/#font-weight-prop" target="_blank">CSS Fonts Module Level 3 - font-weight property</a><br />
+		</p>
+		<p>&nbsp;</p>
+		<p><strong>Discuss, suggest changes and improvements:</strong><br />
+			<a href="http://www.impallari.com/projects/overview/family-stem-weight-calculator" target="_blank">Project Page</a>, <a href="http://typophile.com/node/99181" target="_blank">Typophile</a> and <a href="http://typedrawers.com/discussion/205/family-stem-weights-calculator" target="_blank">TypeDrawers</a><br />
+		<p>&nbsp;</p>
+		<p><strong>More Impallari Tools:</strong><br />
+			<a href="http://www.impallari.com/testing/" target="_blank">Drag and Drop Font Testing page</a><br />
+			<a href="http://www.impallari.com/projects/overview/simplepolator" target="_blank">Simplepolator</a><br />
+			<a href="http://www.impallari.com/projects/overview/spacing-macro" target="_blank">Spacing Macro</a><br />
+		</p>		
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+$(function () {
+
+    // Data
+    var equal = [[1,20],[2,45],[3,70],[4,95],[5,120],[6,145],[7,170],[8,195],[9,220],];
+
+    var lucas = [[1,20],[2,27],[3,36],[4,49],[5,66],[6,90],[7,121],[8,163],[9,220],];
+
+    var impallari = [[1,20],[2,29],[3,45],[4,66],[5,93],[6,124],[7,158],[8,191],[9,220],];
+    
+	// Options
+	$.plot($("#placeholder"), [	
+								{ data: equal, label: "Equal", color: "rgb(69,87,191)", lines: { show: true }, },
+								{ data: impallari, label: "Impallari", color: "rgb(103,178,46)", lines: { show: true }, },
+								{ data: lucas, label: "Lucas", color: "rgb(255,106,54)", lines: { show: true }, }
+							  ],
+								{ 
+									grid: { borderWidth: 1, borderColor: "#cccccc", backgroundColor: { colors: ["#fff", "#f6f6f6"] } },
+									legend: { position: 'nw', margin: 20 },
+									xaxis: { tickDecimals: 0 },
+								}
+	);
+	
+	// Checkboxes
+	 
+});
+</script>
+
+</body>
+</html>
